@@ -28,7 +28,13 @@ public class MMServer {
         this.serverSocket = new ServerSocket(50000);
 
         // Automaticaly start the server
-        this.start();
+        while (true){
+            try {
+                this.start();
+            } catch (SocketException se) {
+                log.info("Connection interrupted.");
+            }
+        }
     }
 
     public void start() throws IOException {
