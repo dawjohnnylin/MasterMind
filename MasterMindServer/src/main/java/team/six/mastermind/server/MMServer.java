@@ -80,7 +80,10 @@ public class MMServer {
                     game = new MMGame();
                 } else {
                     // New game with specified answer
-                    game = new MMGame(packet);
+                    if (packet.toString().contains("0"))
+                        game = new MMGame();
+                    else
+                        game = new MMGame(packet);
                 }
 
                 log.info("Game created! (Answer = " + game.getAnswer().toString() + ")");
